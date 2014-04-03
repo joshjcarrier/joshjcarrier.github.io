@@ -250,7 +250,7 @@
                     <div class="col-md-7">
                         <h2 class="featurette-heading">{{projectPair.right.name}}. <span class="text-muted">{{projectPair.right.tagline}}</span></h2>
                         <p class="lead">{{projectPair.right.description}}</p>
-                        <a ng-if="projectPair.right.github_url.length > 0" class="btn btn-default btn-success" href="{{projectPair.right.github_url}}" role="button">View on GitHub &raquo;</a>
+                        <a ng-if="projectPair.right.github_url.length > 0" class="btn btn-success" href="{{projectPair.right.github_url}}" role="button">View on GitHub &raquo;</a>
                         <a ng-if="projectPair.right.bitbucket_url.length > 0" class="btn btn-default btn-primary" href="{{projectPair.right.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a>
                     </div>
                 </div>
@@ -271,7 +271,7 @@
                     <img ng-src="{{project.thumbnail_url}}" alt="{{project.name}}" width="{{project.thumbnail_width}}">
                     <h2>{{project.name}}. <span class="text-muted">{{project.tagline}}.</span></h2>
                     <p><strong>{{project.year}}.</strong> {{project.description}}</p>
-                    <p ng-if="project.github_url.length > 0"><a class="btn btn-default btn-success" href="{{project.github_url}}" role="button">View on GitHub &raquo;</a></p>
+                    <p ng-if="project.github_url.length > 0"><a class="btn btn-success btn-sm" href="{{project.github_url}}" role="button">View on GitHub &raquo;</a></p>
                     <p ng-if="project.bitbucket_url.length > 0"><a class="btn btn-primary btn-sm" href="{{project.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
             </div>
@@ -308,6 +308,15 @@
         portfolioApp.controller('ArchivedProjectListCtrl', function ($scope) {
             var archiveProjects = [
             {
+                'name': 'EventPipe',
+                'tagline': 'HELLO REAL WORLD',
+                'year': '2013',
+                'description': 'An LCD display and shift registers driven by .NET Micro Framework on a Netduino, wirelessly driven by an Xbee modem. A server on a remote computer broadcasts text to the modem from instant messenger, RSS, bug trackers.',
+                'github_url': 'https://github.com/joshjcarrier/EventPipe',
+                'thumbnail_url': 'assets/featurettes/eventpipe.png',
+                'thumbnail_width': '276'
+            },
+            {
                 'name': 'phpHgAdmin',
                 'tagline': 'Mercurial Repository Manager',
                 'year': '2012',
@@ -339,7 +348,7 @@
                 'description': 'Notifies UBC residents with a toast notification if remaining port quota reaches critical thresholds.',
                 'bitbucket_url': 'https://bitbucket.org/joshjcarrier/resnet-quota-monitor-2',
                 'thumbnail_url': 'assets/featurettes/rqm2.png',
-                'thumbnail_width': '300'
+                'thumbnail_width': '306'
             },
             {
                 'name': 'Autobot',
@@ -347,7 +356,7 @@
                 'year': '2006',
                 'description': 'Uses coloured blob detection to map object\'s position to the mouse. Played one very poor round of Halo\'s Blood Gulch.',
                 'thumbnail_url': 'assets/featurettes/autobot.png',
-                'thumbnail_width': '214'
+                'thumbnail_width': '230'
             }
           ];
 
