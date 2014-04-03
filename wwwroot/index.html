@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Portfolio for Josh Carrier.">
     <meta name="author" content="Josh Carrier">
+    <base target="_blank">
 
     <title>Josh Carrier</title>
 
@@ -190,8 +191,8 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Portfolio</a></li>
-                    <li><a href="http://blog.joshjcarrier.com" target="_blank">Blog&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window"></span></a></li>
-                    <li><a href="https://www.linkedin.com/in/joshjcarrier" target="_blank">LinkedIn&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window"></span></a></li>
+                    <li><a href="http://blog.joshjcarrier.com">Blog&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window"></span></a></li>
+                    <li><a href="https://www.linkedin.com/in/joshjcarrier">LinkedIn&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window"></span></a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -228,14 +229,31 @@
     <div class="container">
 
         <!-- START THE FEATURETTES -->
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">Minecontrol. <span class="text-muted">XBOX 360 controls on your PC.</span></h2>
-                <p class="lead">Play Minecraft like a console game on your PC, with a Microsoft Xbox 360 controller!</p>
-                <a class="btn btn-default btn-success" href="https://github.com/joshjcarrier/minecontrol" role="button">View on GitHub &raquo;</a>
-            </div>
-            <div class="col-md-5">
-                <img class="featurette-image img-responsive" src="assets/featurettes/minecontrol2.png" alt="Minecontrol">
+        <div ng-controller="FeaturedProjectListCtrl">
+            <div ng-repeat="projectPair in featureProjectGroups">
+                <div class="row featurette">
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading">{{projectPair.left.name}}. <span class="text-muted">{{projectPair.left.tagline}}</span></h2>
+                        <p class="lead">{{projectPair.left.description}}</p>
+                        <a ng-if="projectPair.left.github_url.length > 0" class="btn btn-default btn-success" href="{{projectPair.left.github_url}}" role="button">View on GitHub &raquo;</a>
+                        <a ng-if="projectPair.left.bitbucket_url.length > 0" class="btn btn-default btn-primary" href="{{projectPair.left.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a>
+                    </div>
+                    <div class="col-md-5">
+                        <img class="featurette-image img-responsive" ng-src="{{projectPair.left.thumbnail_url}}" alt="{{projectPair.left.name}}">
+                    </div>
+                </div>
+                <div class="row featurette" ng-if="projectPair.right">
+                    <div class="col-md-5">
+                        <br/>
+                        <img class="featurette-image img-responsive" ng-src="{{projectPair.right.thumbnail_url}}" alt="{{projectPair.right.name}}">
+                    </div>
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading">{{projectPair.right.name}}. <span class="text-muted">{{projectPair.right.tagline}}</span></h2>
+                        <p class="lead">{{projectPair.right.description}}</p>
+                        <a ng-if="projectPair.right.github_url.length > 0" class="btn btn-default btn-success" href="{{projectPair.right.github_url}}" role="button">View on GitHub &raquo;</a>
+                        <a ng-if="projectPair.right.bitbucket_url.length > 0" class="btn btn-default btn-primary" href="{{projectPair.right.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -253,6 +271,7 @@
                     <img ng-src="{{project.thumbnail_url}}" alt="{{project.name}}" width="{{project.thumbnail_width}}">
                     <h2>{{project.name}}. <span class="text-muted">{{project.tagline}}.</span></h2>
                     <p><strong>{{project.year}}.</strong> {{project.description}}</p>
+                    <p ng-if="project.github_url.length > 0"><a class="btn btn-default btn-success" href="{{project.github_url}}" role="button">View on GitHub &raquo;</a></p>
                     <p ng-if="project.bitbucket_url.length > 0"><a class="btn btn-primary btn-sm" href="{{project.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
             </div>
@@ -263,7 +282,13 @@
         <!-- FOOTER -->
         <footer>
             <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>&copy; 2007-2014 <a href="mailto:josh@joshjcarrier.com">Josh Carrier</a> &middot; <a href="https://bitbucket.org/joshjcarrier">Bitbucket</a> &middot; <a href="http://blog.joshjcarrier.com">Blog</a> &middot; <a href="https://github.com/joshjcarrier/">GitHub</a> &middot; <a href="https://www.linkedin.com/in/joshjcarrier">LinkedIn</a></p>
+            <p>&copy; 2007-2014 <a href="mailto:josh@joshjcarrier.com">Josh Carrier</a>
+                &middot; <a href="https://bitbucket.org/joshjcarrier">Bitbucket</a>
+                &middot; <a href="http://blog.joshjcarrier.com">Blog</a>
+                &middot; <a href="https://github.com/joshjcarrier/">GitHub</a>
+                &middot; <a href="https://www.linkedin.com/in/joshjcarrier">LinkedIn</a>
+                &middot; <small>Powered by <a href="http://angularjs.org/">AngularJS</a> and <a href="http://getbootstrap.com/">Bootstrap</a>.</small>
+            </p>
         </footer>
 
     </div><!-- /.container -->
@@ -286,16 +311,16 @@
                 'name': 'phpHgAdmin',
                 'tagline': 'Mercurial Repository Manager',
                 'year': '2012',
-                'description': 'A PHP web front-end to manage hgwebdir.cgi-served Mercurial repositories. Provides repository create, disable/enable, delete functionality plus basic project-specific hgrc modifications (permissions, UI).',
+                'description': 'A PHP web front-end to manage hgwebdir.cgi-served Mercurial repositories. Provides repository create, disable/enable, delete functionality plus basic project-specific hgrc modifications.',
                 'bitbucket_url': 'https://bitbucket.org/joshjcarrier/phphgadmin',
                 'thumbnail_url': 'assets/featurettes/phphgadmin.png',
                 'thumbnail_width': '340'
             },
             {
                 'name': 'GISH-N',
-                'tagline': 'Geo-reference Information System for Horticulture and Nature',
+                'tagline': 'Botany project tracking',
                 'year': '2009',
-                'description': 'A PHP/MySQL scientific data aggregation system built on the CodeIgniter framework with integration to Google Maps and Picasa.',
+                'description': 'Geo-reference Information System for Horticulture and Nature - a PHP/MySQL scientific data aggregation system built on the CodeIgniter framework with integration to Google Maps and Picasa.',
                 'thumbnail_url': 'assets/featurettes/gishn.png',
                 'thumbnail_width': '300'
             },
@@ -311,7 +336,7 @@
                 'name': 'ResNet Quota Monitor',
                 'tagline': 'Desktop notifier',
                 'year': '2007',
-                'description': 'Notifies UBC residents with a toast notification if remaining port quota reaches a critical thresholds.',
+                'description': 'Notifies UBC residents with a toast notification if remaining port quota reaches critical thresholds.',
                 'bitbucket_url': 'https://bitbucket.org/joshjcarrier/resnet-quota-monitor-2',
                 'thumbnail_url': 'assets/featurettes/rqm2.png',
                 'thumbnail_width': '300'
@@ -323,17 +348,41 @@
                 'description': 'Uses coloured blob detection to map object\'s position to the mouse. Played one very poor round of Halo\'s Blood Gulch.',
                 'thumbnail_url': 'assets/featurettes/autobot.png',
                 'thumbnail_width': '214'
-            },
+            }
           ];
 
-          var columns = 3;
+          var archiveColumns = 3;
           var archiveProjectGroups = [];
-          for (var i = 0; i < archiveProjects.length; i += columns)
+          for (var i = 0; i < archiveProjects.length; i += archiveColumns)
           {
-              archiveProjectGroups.push(archiveProjects.slice(i, i + columns));
+              archiveProjectGroups.push(archiveProjects.slice(i, i + archiveColumns));
           }
 
           $scope.archiveProjectGroups = archiveProjectGroups;
+        });
+
+        portfolioApp.controller('FeaturedProjectListCtrl', function ($scope) {
+            var featureProjects = [
+            {
+                'name': 'Minecontrol',
+                'tagline': 'XBOX 360 controls on your PC',
+                'year': '2011-2014',
+                'description': 'Play Minecraft like a console game on your PC, with a Microsoft Xbox 360 controller!',
+                'github_url': 'https://github.com/joshjcarrier/minecontrol',
+                'thumbnail_url': 'assets/featurettes/minecontrol2.png',
+                'thumbnail_width': '340'
+            }
+          ];
+
+          var featureAlternations = 2;
+          var featureProjectGroups = [];
+          for (var i = 0; i < featureProjects.length; i += featureAlternations)
+          {
+              var pairProjects = featureProjects.slice(i, i + featureAlternations);
+              featureProjectGroups.push({left: pairProjects[0], right: pairProjects[1]});
+          }
+
+          $scope.featureProjectGroups = featureProjectGroups;
         });
     </script>
 </body>
