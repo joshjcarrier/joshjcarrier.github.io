@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="portfolioApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -172,7 +172,6 @@
         }
     }
     </style>
-
 </head>
 <!-- NAVBAR
 ================================================== -->
@@ -186,13 +185,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Josh Carrier&apos;s Portfolio</a>
+                <a class="navbar-brand" href="#">Josh Carrier</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Projects</a></li>
-                    <li><a href="http://blog.joshjcarrier.com">Blog</a></li>
-                    <li><a href="https://www.linkedin.com/in/joshjcarrier">LinkedIn</a></li>
+                    <li class="active"><a href="#">Portfolio</a></li>
+                    <li><a href="http://blog.joshjcarrier.com" target="_blank">Blog&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window"></span></a></li>
+                    <li><a href="https://www.linkedin.com/in/joshjcarrier" target="_blank">LinkedIn&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window"></span></a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -226,13 +225,13 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
+    <div class="container">
 
         <!-- START THE FEATURETTES -->
         <div class="row featurette">
             <div class="col-md-7">
                 <h2 class="featurette-heading">Minecontrol. <span class="text-muted">XBOX 360 controls on your PC.</span></h2>
-                <p class="lead">Play Minecraft like a console game on your PC with a Microsoft Xbox 360 controller!</p>
+                <p class="lead">Play Minecraft like a console game on your PC, with a Microsoft Xbox 360 controller!</p>
                 <a class="btn btn-default btn-success" href="https://github.com/joshjcarrier/minecontrol" role="button">View on GitHub &raquo;</a>
             </div>
             <div class="col-md-5">
@@ -244,38 +243,20 @@
 
         <!-- /END THE FEATURETTES -->
 
-        <div class="row">
-            <div class="col-lg-4">
-                <img class="img-thumbnail img-responsive" src="assets/featurettes/phphgadmin.png" alt="PHP-Mercurial Repository Manager" width="340">
-                <h2>phpHgAdmin. <span class="text-muted">Mercurial Repository Manager.</span></h2>
-                <p>2012. A PHP web front-end to manage hgwebdir.cgi-served Mercurial repositories. Provides repository create, disable/enable, delete functionality plus basic project-specific hgrc modifications (permissions, ui, etc.).</p>
-                <p><a class="btn btn-primary btn-sm" href="https://bitbucket.org/joshjcarrier/phphgadmin" role="button">View on Bitbucket &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <img class="img-thumbnail img-responsive" src="assets/featurettes/gishn.png" alt="Geo-reference Information System for Horticulture and Nature" width="300">
-                <h2>GISH-N. <span class="text-muted">Geo-reference Information System for Horticulture and Nature.</span></h2>
-                <p>2009. A PHP/MySQL scientific data aggregation system built on the CodeIgniter framework with integration to Google Maps and Picasa.</p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <img class="img-thumbnail img-responsive" src="assets/featurettes/bigbluebubbletea.jpg" alt="Big Blue Bubble Tea" width="250">
-                <h2>Big Blue Bubble Tea. <span class="text-muted">Order management.</span></h2>
-                <p>2008. A PHP/MySQL order tracker for Active Directory-authenticated users to place Bubble Tea orders to a single organizer, who can then place an order on behalf of the group.</p>
-            </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+        <h1>Project <span class="text-muted">History.</span></h1>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <img class="img-thumbnail img-responsive" src="assets/featurettes/rqm2.png" alt="ResNet Quota Monitor for UBC" width="300">
-                <h2>ResNet Quota Monitor. <span class="text-muted">Desktop notifier.</span></h2>
-                <p>2007. Notifies UBC residents with a toast notification if remaining port quota reaches a critical thresholds.</p>
-                <p><a class="btn btn-primary btn-sm" href="https://bitbucket.org/joshjcarrier/resnet-quota-monitor-2" role="button">View on Bitbucket &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <img class="img-thumbnail img-responsive" src="assets/featurettes/autobot.png" alt="Autobot" width="214">
-                <h2>Autobot. <span class="text-muted">Move your mouse with colours.</h2></h2>
-                <p>2006. Uses coloured blob detection to map object's position to the mouse. Played one very poor round of Halo's <i>Blood Gulch</i>.</p>
-            </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+        <div ng-controller="ArchivedProjectListCtrl">
+            <div class="row" ng-repeat="projectGroup in archiveProjectGroups">
+                <div class="col-md-4" ng-repeat="project in projectGroup">
+                    <br/>
+                    <br/>
+                    <img ng-src="{{project.thumbnail_url}}" alt="{{project.name}}" width="{{project.thumbnail_width}}">
+                    <h2>{{project.name}}. <span class="text-muted">{{project.tagline}}.</span></h2>
+                    <p><strong>{{project.year}}.</strong> {{project.description}}</p>
+                    <p ng-if="project.bitbucket_url.length > 0"><a class="btn btn-primary btn-sm" href="{{project.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div>
+        </div>
 
         <hr class="featurette-divider">
 
@@ -293,5 +274,67 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script>
+        var portfolioApp = angular.module('portfolioApp', []);
+
+        portfolioApp.controller('ArchivedProjectListCtrl', function ($scope) {
+            var archiveProjects = [
+            {
+                'name': 'phpHgAdmin',
+                'tagline': 'Mercurial Repository Manager',
+                'year': '2012',
+                'description': 'A PHP web front-end to manage hgwebdir.cgi-served Mercurial repositories. Provides repository create, disable/enable, delete functionality plus basic project-specific hgrc modifications (permissions, UI).',
+                'bitbucket_url': 'https://bitbucket.org/joshjcarrier/phphgadmin',
+                'thumbnail_url': 'assets/featurettes/phphgadmin.png',
+                'thumbnail_width': '340'
+            },
+            {
+                'name': 'GISH-N',
+                'tagline': 'Geo-reference Information System for Horticulture and Nature',
+                'year': '2009',
+                'description': 'A PHP/MySQL scientific data aggregation system built on the CodeIgniter framework with integration to Google Maps and Picasa.',
+                'thumbnail_url': 'assets/featurettes/gishn.png',
+                'thumbnail_width': '300'
+            },
+            {
+                'name': 'Big Blue Bubble Tea',
+                'tagline': 'Order management',
+                'year': '2008',
+                'description': 'A PHP/MySQL order tracker for Active Directory-authenticated users to place Bubble Tea orders to a single organizer, who can then place an order on behalf of the group.',
+                'thumbnail_url': 'assets/featurettes/bigbluebubbletea.jpg',
+                'thumbnail_width': '250'
+            },
+            {
+                'name': 'ResNet Quota Monitor',
+                'tagline': 'Desktop notifier',
+                'year': '2007',
+                'description': 'Notifies UBC residents with a toast notification if remaining port quota reaches a critical thresholds.',
+                'bitbucket_url': 'https://bitbucket.org/joshjcarrier/resnet-quota-monitor-2',
+                'thumbnail_url': 'assets/featurettes/rqm2.png',
+                'thumbnail_width': '300'
+            },
+            {
+                'name': 'Autobot',
+                'tagline': 'Move your mouse with colours',
+                'year': '2006',
+                'description': 'Uses coloured blob detection to map object\'s position to the mouse. Played one very poor round of Halo\'s Blood Gulch.',
+                'thumbnail_url': 'assets/featurettes/autobot.png',
+                'thumbnail_width': '214'
+            },
+          ];
+
+          var columns = 3;
+          var archiveProjectGroups = [];
+          for (var i = 0; i < archiveProjects.length; i += columns)
+          {
+              archiveProjectGroups.push(archiveProjects.slice(i, i + columns));
+          }
+
+          $scope.archiveProjectGroups = archiveProjectGroups;
+        });
+    </script>
 </body>
 </html>
