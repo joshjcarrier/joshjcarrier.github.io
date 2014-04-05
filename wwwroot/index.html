@@ -281,13 +281,17 @@
                         <a ng-if="projectPair.left.bitbucket_url.length > 0" class="btn btn-default btn-primary" href="{{projectPair.left.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a>
                     </div>
                     <div class="col-md-5">
-                        <img class="featurette-image img-responsive" ng-src="{{projectPair.left.thumbnail_url}}" alt="{{projectPair.left.name}}">
+                        <a ng-href="{{projectPair.left.thumbnail_url}}">
+                            <img class="featurette-image img-responsive" ng-src="{{projectPair.left.thumbnail_url}}" alt="{{projectPair.left.name}}">
+                        </a>
                     </div>
                 </div>
                 <div class="row featurette" ng-if="projectPair.right">
                     <div class="col-md-5">
                         <br/>
-                        <img class="featurette-image img-responsive" ng-src="{{projectPair.right.thumbnail_url}}" alt="{{projectPair.right.name}}">
+                        <a ng-href="{{projectPair.right.thumbnail_url}}">
+                            <img class="featurette-image img-responsive" ng-src="{{projectPair.right.thumbnail_url}}" alt="{{projectPair.right.name}}">
+                        </a>
                     </div>
                     <div class="col-md-7">
                         <h2 class="featurette-heading">{{projectPair.right.name}}. <span class="text-muted">{{projectPair.right.tagline}}.</span></h2>
@@ -307,12 +311,17 @@
 
         <div ng-controller="ArchivedProjectListCtrl">
             <div class="row" ng-repeat="projectGroup in archiveProjectGroups">
-                <div class="col-md-4" ng-repeat="project in projectGroup">
+                <div class="col-sm-4" ng-repeat="project in projectGroup">
                     <br/>
                     <br/>
-                    <img ng-src="{{project.thumbnail_url}}" alt="{{project.name}}" width="{{project.thumbnail_width}}">
+                    <div style="height: 300px; overflow: hidden">
+                        <a ng-href="{{project.thumbnail_url}}">
+                            <img ng-src="{{project.thumbnail_url}}" alt="{{project.name}}" style="height: 300px"/>
+                        </a>
+                    </div>
                     <h2>{{project.name}}. <span class="text-muted">{{project.tagline}}.</span></h2>
                     <p><strong>{{project.year}}.</strong> {{project.description}}</p>
+                    <br/>
                     <p ng-if="project.github_url.length > 0"><a class="btn btn-success btn-sm" href="{{project.github_url}}" role="button">View on GitHub &raquo;</a></p>
                     <p ng-if="project.bitbucket_url.length > 0"><a class="btn btn-primary btn-sm" href="{{project.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
@@ -334,13 +343,16 @@
 
         <!-- FOOTER -->
         <footer>
-            <p>&copy; 2007-2014 <a href="mailto:josh@joshjcarrier.com">Josh Carrier</a>
-                &middot; <a href="https://bitbucket.org/joshjcarrier">Bitbucket</a>
+            <div class="pull-left">
+                &copy; 2007-2014 <script>document.write('<'+'a'+' '+'h'+'r'+'e'+'f'+'='+"'"+'&'+'#'+'1'+'0'+'9'+';'+'a'+'i'+'&'+'#'+'1'+'0'+'8'+';'+'t'+'o'+'&'+'#'+'5'+'8'+';'+'&'+'#'+'3'+'7'+';'+'6'+'A'+'%'+'6'+'F'+'s'+'%'+'6'+'8'+'&'+'#'+'6'+'4'+';'+'j'+'&'+'#'+'1'+'1'+'1'+';'+'%'+'&'+'#'+'5'+'5'+';'+'3'+'h'+'&'+'#'+'1'+'0'+'6'+';'+'%'+'6'+'3'+'%'+'6'+'1'+'%'+'7'+'2'+'r'+'&'+'#'+'3'+'7'+';'+'&'+'#'+'5'+'4'+';'+'&'+'#'+'5'+'7'+';'+'&'+'#'+'3'+'7'+';'+'6'+'5'+'&'+'#'+'1'+'1'+'4'+';'+'&'+'#'+'4'+'6'+';'+'&'+'#'+'9'+'9'+';'+'&'+'#'+'1'+'1'+'1'+';'+'%'+'6'+'&'+'#'+'6'+'8'+';'+"'"+'>Josh Carrier<'+'/'+'a'+'>');</script><noscript>Josh Carrier</noscript>.
+                <a href="https://bitbucket.org/joshjcarrier">Bitbucket</a>
                 &middot; <a href="http://blog.joshjcarrier.com">Blog</a>
                 &middot; <a href="https://github.com/joshjcarrier/">GitHub</a>
-                &middot; <a href="https://www.linkedin.com/in/joshjcarrier">LinkedIn</a>
-                &middot; <small>Powered by <a href="http://angularjs.org/">AngularJS</a>, <a href="http://getbootstrap.com/">Bootstrap</a> and <a href="http://gitgraphjs.com/">GitGraph.js</a>.</small>
-            </p>
+                &middot; <a href="https://www.linkedin.com/in/joshjcarrier">LinkedIn</a>.
+            </div>
+            <div class="pull-right">
+                <small>Made possible with <a href="http://angularjs.org/">AngularJS</a>, <a href="http://getbootstrap.com/">Bootstrap</a> and <a href="http://gitgraphjs.com/">GitGraph.js</a> &middot; <a href="license-ext.txt">Open source licenses</a>.</small>
+            </div>
         </footer>
 
     </div><!-- /.container -->
@@ -367,50 +379,44 @@
                 'year': '2013',
                 'description': 'An LCD display and shift registers driven by .NET Micro Framework on a Netduino, wirelessly driven by an Xbee modem. A server on a remote computer broadcasts text to the modem from instant messenger, RSS, bug trackers.',
                 'github_url': 'https://github.com/joshjcarrier/EventPipe',
-                'thumbnail_url': 'assets/featurettes/eventpipe.png',
-                'thumbnail_width': '276'
+                'thumbnail_url': 'assets/featurettes/eventpipe.png'
             },
             {
                 'name': 'phpHgAdmin',
                 'tagline': 'Mercurial Repository Manager',
                 'year': '2012',
-                'description': 'A PHP web front-end to manage hgwebdir.cgi-served Mercurial repositories. Provides repository create, disable/enable, delete functionality plus basic project-specific hgrc modifications.',
+                'description': 'A PHP web front-end to manage hgwebdir.cgi-served (Python) Mercurial repositories. Provides repository create, disable/enable, delete functionality plus basic project-specific hgrc modifications, with basic HTTP authorization.',
                 'bitbucket_url': 'https://bitbucket.org/joshjcarrier/phphgadmin',
-                'thumbnail_url': 'assets/featurettes/phphgadmin.png',
-                'thumbnail_width': '340'
+                'thumbnail_url': 'assets/featurettes/phphgadmin.png'
             },
             {
                 'name': 'GISH-N',
                 'tagline': 'Botany project tracking',
                 'year': '2009',
                 'description': 'Geo-reference Information System for Horticulture and Nature - a PHP/MySQL scientific data aggregation system built on the CodeIgniter framework with integration to Google Maps and Picasa.',
-                'thumbnail_url': 'assets/featurettes/gishn.png',
-                'thumbnail_width': '300'
+                'thumbnail_url': 'assets/featurettes/gishn.png'
             },
             {
                 'name': 'Big Blue Bubble Tea',
                 'tagline': 'Order management',
                 'year': '2008',
                 'description': 'A PHP/MySQL order tracker for Active Directory-authenticated users to place Bubble Tea orders to a single organizer, who can then place an order on behalf of the group.',
-                'thumbnail_url': 'assets/featurettes/bigbluebubbletea.jpg',
-                'thumbnail_width': '250'
+                'thumbnail_url': 'assets/featurettes/bigbluebubbletea.jpg'
             },
             {
                 'name': 'ResNet Quota Monitor',
                 'tagline': 'Desktop notifier',
                 'year': '2007',
-                'description': 'Notifies UBC residents with a toast notification if remaining port quota reaches critical thresholds.',
+                'description': 'Notifies UBC residents with animated toast notifications if remaining IP quota reaches critical thresholds.',
                 'bitbucket_url': 'https://bitbucket.org/joshjcarrier/resnet-quota-monitor-2',
-                'thumbnail_url': 'assets/featurettes/rqm2.png',
-                'thumbnail_width': '306'
+                'thumbnail_url': 'assets/featurettes/rqm2.png'
             },
             {
                 'name': 'Autobot',
                 'tagline': 'Move your mouse with colours',
                 'year': '2006',
                 'description': 'Uses coloured blob detection to map object\'s position to the mouse. Played one very poor round of Halo\'s Blood Gulch.',
-                'thumbnail_url': 'assets/featurettes/autobot.png',
-                'thumbnail_width': '230'
+                'thumbnail_url': 'assets/featurettes/autobot.png'
             }
           ];
 
@@ -432,8 +438,7 @@
                 'year': '2011-2014',
                 'description': 'Play Minecraft like a console game on your PC, with a Microsoft Xbox 360 controller!',
                 'github_url': 'https://github.com/joshjcarrier/minecontrol',
-                'thumbnail_url': 'assets/featurettes/minecontrol2.png',
-                'thumbnail_width': '340'
+                'thumbnail_url': 'assets/featurettes/minecontrol2.png'
             }
           ];
 
