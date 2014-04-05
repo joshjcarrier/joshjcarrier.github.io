@@ -279,6 +279,7 @@
                         <h2 class="featurette-heading">{{projectPair.left.name}}. <span class="text-muted">{{projectPair.left.tagline}}.</span></h2>
                         <p class="lead">{{projectPair.left.description}}</p>
                         <br />
+						<a ng-if="projectPair.left.blog_url.length > 0" class="btn btn-info" href="{{projectPair.left.blog_url}}" role="button">Follow on blog &raquo;</a>
                         <a ng-if="projectPair.left.github_url.length > 0" class="btn btn-default btn-success" href="{{projectPair.left.github_url}}" role="button">View on GitHub &raquo;</a>
                         <a ng-if="projectPair.left.bitbucket_url.length > 0" class="btn btn-default btn-primary" href="{{projectPair.left.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a>
                     </div>
@@ -299,6 +300,7 @@
                         <h2 class="featurette-heading">{{projectPair.right.name}}. <span class="text-muted">{{projectPair.right.tagline}}.</span></h2>
                         <p class="lead">{{projectPair.right.description}}</p>
                         <br />
+						<a ng-if="projectPair.right.blog_url.length > 0" class="btn btn-info" href="{{projectPair.right.blog_url}}" role="button">Follow on blog &raquo;</a>
                         <a ng-if="projectPair.right.github_url.length > 0" class="btn btn-success" href="{{projectPair.right.github_url}}" role="button">View on GitHub &raquo;</a>
                         <a ng-if="projectPair.right.bitbucket_url.length > 0" class="btn btn-default btn-primary" href="{{projectPair.right.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a>
                     </div>
@@ -325,8 +327,10 @@
                     <h2>{{project.name}}. <span class="text-muted">{{project.tagline}}.</span></h2>
                     <p><strong>{{project.year}}.</strong> {{project.description}}</p>
                     <br/>
-                    <p ng-if="project.github_url.length > 0"><a class="btn btn-success btn-sm" href="{{project.github_url}}" role="button">View on GitHub &raquo;</a></p>
-                    <p ng-if="project.bitbucket_url.length > 0"><a class="btn btn-primary btn-sm" href="{{project.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a></p>
+					<a ng-if="project.blog_url.length > 0" class="btn btn-info btn-sm" href="{{project.blog_url}}" role="button">Follow on blog &raquo;</a>
+                    <a ng-if="project.github_url.length > 0" class="btn btn-success btn-sm" href="{{project.github_url}}" role="button">View on GitHub &raquo;</a>
+                    <a ng-if="project.bitbucket_url.length > 0" class="btn btn-primary btn-sm" href="{{project.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a>
+					<br/>
                 </div><!-- /.col-lg-4 -->
             </div>
         </div>
@@ -399,11 +403,28 @@
                 'description': 'Geo-reference Information System for Horticulture and Nature - a PHP/MySQL scientific data aggregation system built on the CodeIgniter framework with integration to Google Maps and Picasa.',
                 'thumbnail_url': 'assets/featurettes/gishn.png'
             },
+			{
+                'name': 'Time Table Builder',
+                'tagline': 'Schedule generator',
+                'year': '2008',
+                'description': 'A schedule permutator – supplied with a list of course selections, the system can generate a collection of possible timetables which are maximally compatible with the parameters specified.',
+                'thumbnail_url': 'assets/featurettes/ttb.jpg',
+				'blog_url': 'http://javadocs.wordpress.com/2008/10/11/evolution-of-timetable-builder/'
+            },
+			{
+                'name': 'Tetris Cube Solver',
+                'tagline': 'Distributed solving',
+                'year': '2008',
+                'description': 'Coordination of multiple machines to find 1 of 10,00 ideal solutions for a 3D block puzzle. Found after 2 days/6,500,543 chunks of brute force combinatorial work across 14 clients.',
+                'thumbnail_url': 'assets/featurettes/tetriscube.jpg',
+				'blog_url': 'http://javadocs.wordpress.com/2008/09/29/project-complete-tetris-cube-solver-cloud/'
+            },
             {
                 'name': 'Big Blue Bubble Tea',
                 'tagline': 'Order management',
                 'year': '2008',
                 'description': 'A PHP/MySQL order tracker for Active Directory-authenticated users to place Bubble Tea orders to a single organizer, who can then place an order on behalf of the group.',
+				'blog_url': 'http://javadocs.wordpress.com/2008/10/03/everybody-loves-bubble-tea/',
                 'thumbnail_url': 'assets/featurettes/bigbluebubbletea.jpg'
             },
             {
@@ -412,14 +433,16 @@
                 'year': '2007',
                 'description': 'Notifies UBC residents with animated toast notifications if remaining IP quota reaches critical thresholds.',
                 'bitbucket_url': 'https://bitbucket.org/joshjcarrier/resnet-quota-monitor-2',
+				'blog_url': 'http://javadocs.wordpress.com/2009/10/29/resnet-quota-monitor-2-still-in-works-maybe-going-open-source/',
                 'thumbnail_url': 'assets/featurettes/rqm2.png'
             },
             {
-                'name': 'Autobot',
+                'name': 'Atomaton',
                 'tagline': 'Move your mouse with colours',
                 'year': '2006',
                 'description': 'Uses coloured blob detection to map object\'s position to the mouse. Played one very poor round of Halo\'s Blood Gulch.',
-                'thumbnail_url': 'assets/featurettes/autobot.png'
+				'blog_url': 'http://javadocs.wordpress.com/2008/09/29/atomaton-an-atonomous-sentry-almost/',
+                'thumbnail_url': 'assets/featurettes/atomaton.png'
             }
           ];
 
@@ -439,7 +462,8 @@
                 'name': 'Minecontrol',
                 'tagline': 'XBOX 360 controls on your PC',
                 'year': '2011-2014',
-                'description': 'Play Minecraft like a console game on your PC, with a Microsoft Xbox 360 controller!',
+                'description': 'Play Minecraft like a console game on your PC, with a Microsoft Xbox 360 controller! 15K downloads a month!',
+				'blog_url': 'http://javadocs.wordpress.com/2013/03/21/minecontrol-2-0-released/',
                 'github_url': 'https://github.com/joshjcarrier/minecontrol',
                 'thumbnail_url': 'assets/featurettes/minecontrol2.png'
             }
