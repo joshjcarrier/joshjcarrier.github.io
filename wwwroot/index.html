@@ -32,7 +32,8 @@
     /* Padding below the footer and lighter body text */
 
     body {
-        padding-bottom: 40px;
+        padding-top: 50px;
+        padding-bottom: 20px;
         color: #5a5a5a;
     }
 
@@ -66,7 +67,7 @@
 
     /* Carousel base class */
     .carousel {
-        height: 500px;
+        height: 450px;
         margin-bottom: 60px;
     }
     /* Since positioning the image, we need to help out the caption */
@@ -76,7 +77,7 @@
 
     /* Declare heights because of positioning of img element */
     .carousel .item {
-        height: 500px;
+        height: 450px;
         background-color: #777;
     }
     .carousel-inner > .item > img {
@@ -84,7 +85,7 @@
         top: 0;
         left: 0;
         min-width: 100%;
-        height: 500px;
+        height: 450px;
     }
 
 
@@ -116,7 +117,7 @@
     ------------------------- */
 
     .featurette-divider {
-        margin: 80px 0; /* Space out the Bootstrap <hr> more */
+        margin: 70px 0; /* Space out the Bootstrap <hr> more */
     }
 
     /* Thin out the marketing headings */
@@ -171,7 +172,7 @@
 
     @media (min-width: 992px) {
         .featurette-heading {
-            margin-top: 120px;
+            margin-top: 50px;
         }
     }
 
@@ -277,6 +278,7 @@
                     <div class="col-md-7">
                         <h2 class="featurette-heading">{{projectPair.left.name}}. <span class="text-muted">{{projectPair.left.tagline}}.</span></h2>
                         <p class="lead">{{projectPair.left.description}}</p>
+                        <br />
                         <a ng-if="projectPair.left.github_url.length > 0" class="btn btn-default btn-success" href="{{projectPair.left.github_url}}" role="button">View on GitHub &raquo;</a>
                         <a ng-if="projectPair.left.bitbucket_url.length > 0" class="btn btn-default btn-primary" href="{{projectPair.left.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a>
                     </div>
@@ -296,6 +298,7 @@
                     <div class="col-md-7">
                         <h2 class="featurette-heading">{{projectPair.right.name}}. <span class="text-muted">{{projectPair.right.tagline}}.</span></h2>
                         <p class="lead">{{projectPair.right.description}}</p>
+                        <br />
                         <a ng-if="projectPair.right.github_url.length > 0" class="btn btn-success" href="{{projectPair.right.github_url}}" role="button">View on GitHub &raquo;</a>
                         <a ng-if="projectPair.right.bitbucket_url.length > 0" class="btn btn-default btn-primary" href="{{projectPair.right.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a>
                     </div>
