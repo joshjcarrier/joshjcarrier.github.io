@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <meta name="description" content="Portfolio for Josh Carrier.">
     <meta name="author" content="Josh Carrier">
     <base target="_blank">
@@ -172,11 +174,45 @@
             margin-top: 120px;
         }
     }
+
+    .gitgraph-tooltip {
+      position: absolute;
+      margin-top: -15px;
+      margin-left: 25px;
+      padding: 10px;
+      border-radius: 5px;
+      background: #EEE;
+      color: #333;
+      text-align: center;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .gitgraph-tooltip:after {
+      position: absolute;
+      top: 10px;
+      left: -18px;
+      width: 0;
+      height: 0;
+      border-width: 10px;
+      border-style: solid;
+      border-color: transparent;
+      border-right-color: #EEE;
+      content: "";
+    }
+
+    .gitgraph-detail {
+      position: absolute;
+      padding: 10px;
+      text-align: justify;
+      width: 600px;
+      display: none;
+    }
     </style>
 </head>
 <!-- NAVBAR
 ================================================== -->
-<body>
+<body data-spy="scroll" data-target=".navbar-header">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -186,11 +222,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Josh Carrier</a>
+                <div class="content">
+                  <img class="pull-left" src="assets/images/avatar.jpg" alt="Josh Carrier" style="height: 42px; width: 42px; margin-top: 4px; margin-right: 8px">
+                  <a class="navbar-brand" href="#top" target="_self">Josh Carrier</a>
+                </div>
             </div>
-            <div class="collapse navbar-collapse">
+            <div class="navbar-header collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Portfolio</a></li>
+                    <li class="active"><a href="#top" target="_self">Projects</a></li>
+                    <li><a href="#experience" target="_self">Experience</a></li>
                     <li><a href="http://blog.joshjcarrier.com">Blog&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window"></span></a></li>
                     <li><a href="https://www.linkedin.com/in/joshjcarrier">LinkedIn&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window"></span></a></li>
                 </ul>
@@ -198,28 +238,30 @@
         </div>
     </div>
 
-    <!-- Carousel
-    ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="item active">
-                <img src="assets/images/banner.png" alt="First slide">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Hello World, again.</h1>
-                        <p>Redesigned portfolio for the new web.</p>
+    <div id="top">
+
+        <!-- Carousel
+        ================================================== -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="assets/images/banner.png" alt="First slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Hello World, again.</h1>
+                            <p>Redesigned portfolio for the new web.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-    </div><!-- /.carousel -->
-
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div><!-- /.carousel -->
+    </div>
 
 
     <!-- Marketing messaging and featurettes
@@ -233,7 +275,7 @@
             <div ng-repeat="projectPair in featureProjectGroups">
                 <div class="row featurette">
                     <div class="col-md-7">
-                        <h2 class="featurette-heading">{{projectPair.left.name}}. <span class="text-muted">{{projectPair.left.tagline}}</span></h2>
+                        <h2 class="featurette-heading">{{projectPair.left.name}}. <span class="text-muted">{{projectPair.left.tagline}}.</span></h2>
                         <p class="lead">{{projectPair.left.description}}</p>
                         <a ng-if="projectPair.left.github_url.length > 0" class="btn btn-default btn-success" href="{{projectPair.left.github_url}}" role="button">View on GitHub &raquo;</a>
                         <a ng-if="projectPair.left.bitbucket_url.length > 0" class="btn btn-default btn-primary" href="{{projectPair.left.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a>
@@ -248,7 +290,7 @@
                         <img class="featurette-image img-responsive" ng-src="{{projectPair.right.thumbnail_url}}" alt="{{projectPair.right.name}}">
                     </div>
                     <div class="col-md-7">
-                        <h2 class="featurette-heading">{{projectPair.right.name}}. <span class="text-muted">{{projectPair.right.tagline}}</span></h2>
+                        <h2 class="featurette-heading">{{projectPair.right.name}}. <span class="text-muted">{{projectPair.right.tagline}}.</span></h2>
                         <p class="lead">{{projectPair.right.description}}</p>
                         <a ng-if="projectPair.right.github_url.length > 0" class="btn btn-success" href="{{projectPair.right.github_url}}" role="button">View on GitHub &raquo;</a>
                         <a ng-if="projectPair.right.bitbucket_url.length > 0" class="btn btn-default btn-primary" href="{{projectPair.right.bitbucket_url}}" role="button">View on Bitbucket &raquo;</a>
@@ -277,17 +319,27 @@
             </div>
         </div>
 
+
+        <div id="experience">
+            <hr class="featurette-divider">
+
+            <h1>Experience <span class="text-muted">Log.</span></h1>
+
+            <div class="container">
+                <canvas id="experienceGraph"></canvas>
+            </div>
+        </div>
+
         <hr class="featurette-divider">
 
         <!-- FOOTER -->
         <footer>
-            <p class="pull-right"><a href="#">Back to top</a></p>
             <p>&copy; 2007-2014 <a href="mailto:josh@joshjcarrier.com">Josh Carrier</a>
                 &middot; <a href="https://bitbucket.org/joshjcarrier">Bitbucket</a>
                 &middot; <a href="http://blog.joshjcarrier.com">Blog</a>
                 &middot; <a href="https://github.com/joshjcarrier/">GitHub</a>
                 &middot; <a href="https://www.linkedin.com/in/joshjcarrier">LinkedIn</a>
-                &middot; <small>Powered by <a href="http://angularjs.org/">AngularJS</a> and <a href="http://getbootstrap.com/">Bootstrap</a>.</small>
+                &middot; <small>Powered by <a href="http://angularjs.org/">AngularJS</a>, <a href="http://getbootstrap.com/">Bootstrap</a> and <a href="http://gitgraphjs.com/">GitGraph.js</a>.</small>
             </p>
         </footer>
 
@@ -299,7 +351,9 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
+    <script>
+        $("body").scrollspy({ target: ".navbar-header" });
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
     <script>
@@ -392,6 +446,58 @@
           }
 
           $scope.featureProjectGroups = featureProjectGroups;
+        });
+    </script>
+
+    <script src="assets/js/gitgraph.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            function renderExperienceGraph() {
+
+                var gitGraph = new GitGraph( {
+                        template: "metro",
+                        elementId: "experienceGraph",
+                        author: "",
+                        orientation: "vertical-reverse"
+                    });
+
+                var education = gitGraph.branch("experience")
+                                        .commit( {
+                                            sha1: "2005-09:",
+                                            message: "Initial enrollment to the Faculty of Science at the University of British Columbia"
+                                        });
+
+                var ibm = gitGraph.branch("ibm")
+                                  .commit( {
+                                      sha1: "2008-01:",
+                                      message: "Branch to Software Developer internship at IBM"
+                                  })
+                                  .merge(education, { sha1: "2008-08:" });
+
+
+                var microsoft = gitGraph.branch({ name: "microsoft" })
+                                        .commit( {
+                                            sha1: "2009-05:",
+                                            message: "Branch to Software Engineer internship at Microsoft"
+                                        })
+                                        .merge(education, { sha1: "2009-08:" })
+                                        .delete();
+
+                education.commit( {
+                            sha1: "2010-05:",
+                            message: "Complete B.Sc. Combined Biology and Computer Science"
+                          })
+                          .merge(microsoft);
+
+                gitGraph.branch("Microsoft")
+                        .commit( {
+                                sha1: "2010-07",
+                                message: "Branch to Software Engineer at Microsoft"
+                        });
+            };
+
+            renderExperienceGraph();
         });
     </script>
 </body>
