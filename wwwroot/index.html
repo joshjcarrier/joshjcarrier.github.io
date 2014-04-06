@@ -89,9 +89,9 @@
     }
 
 	.carousel-banner {
-	    height: 100%; 
+	    height: 100%;
 		background:url('assets/images/banner.png');
-		background-position:center; 
+		background-position:center;
 		background-repeat:no-repeat;
 		background-size: cover;
 	}
@@ -182,12 +182,12 @@
             margin-top: 50px;
         }
     }
-	
+
 	@media (max-width: 767px) {
         .carousel {
 			height: 250px;
 		}
-		
+
 		.carousel .item {
 			height: 250px;
 		}
@@ -225,8 +225,8 @@
     .gitgraph-detail {
       position: absolute;
       padding: 10px;
-      text-align: justify;
-      width: 600px;
+      text-align: left;
+      width: auto;
       display: none;
     }
     </style>
@@ -354,7 +354,7 @@
                 </div><!-- /.col-lg-4 -->
             </div>
         </div>
-		
+
 		<div id="accordion-archive">
 			<div id="archive-button" class="panel-collapse collapse in">
 				<br/>
@@ -365,7 +365,7 @@
 					</a>
 				</h4>
 			</div>
-			<div id="archive" class="panel-collapse collapse">				
+			<div id="archive" class="panel-collapse collapse">
 				<div ng-controller="ArchivedProjectListCtrl">
 					<div class="row" ng-repeat="projectGroup in projectGroups">
 						<div class="col-sm-4" ng-repeat="project in projectGroup">
@@ -385,18 +385,95 @@
 							<br/>
 						</div><!-- /.col-lg-4 -->
 					</div>
-				</div>				
+				</div>
 			</div>
 		</div>
-
 
         <div id="experience">
             <hr class="featurette-divider">
 
             <h1>Experience <span class="text-muted">Log.</span></h1>
 
-            <div style="overflow-x: auto">
-                <canvas id="experienceGraph"></canvas>
+            <div>
+                <canvas id="experienceGraph" style="margin-top: -40px"></canvas>
+
+                <div id="log_msft_fte" class="gitgraph-detail media">
+                    <div class="media">
+                      <a class="pull-left" href="#">
+                          <div style="background:url('assets/images/logo_msft.jpg'); background-size: contain; background-position: center; background-repeat: no-repeat; width: 50px; height: 50px"></div>
+                      </a>
+                      <div class="media-body">
+                        <h4 class="media-heading">Branch to Software Development Engineer.</h4>
+                        Microsoft<span class="text-muted"> authored July 2010</span>
+                      </div>
+                    </div>
+                </div>
+                <div id="log_exp_ubc_close" class="gitgraph-detail media">
+                    <div class="media">
+                      <a class="pull-left" href="#">
+                          <div style="background:url('assets/images/logo_ubc.jpg'); background-size: contain; background-position: center; background-repeat: no-repeat; width: 50px; height: 50px"></div>
+                      </a>
+                      <div class="media-body">
+                        <h4 class="media-heading">Complete B.Sc. Combined Biology and Computer Science.</h4>
+                        The University of British Columbia<span class="text-muted"> authored May 2010</span>
+                      </div>
+                    </div>
+                </div>
+                <div id="log_msft_intern_close" class="gitgraph-detail media">
+                    <div class="media">
+                      <a class="pull-left" href="#">
+                          <div style="background:url('assets/images/logo_jc.png'); background-size: contain; background-position: center; background-repeat: no-repeat; width: 50px; height: 50px"></div>
+                      </a>
+                      <div class="media-body">
+                        <h4 class="media-heading">Merge branch &apos;msft&apos; into &apos;experience&apos;.</h4>
+                        Josh Carrier<span class="text-muted"> authored Aug 2009</span>
+                      </div>
+                    </div>
+                </div>
+                <div id="log_msft_intern" class="gitgraph-detail media">
+                    <div class="media">
+                      <a class="pull-left" href="#">
+                          <div style="background:url('assets/images/logo_msft.jpg'); background-size: contain; background-position: center; background-repeat: no-repeat; width: 50px; height: 50px"></div>
+                      </a>
+                      <div class="media-body">
+                        <h4 class="media-heading">Branch to Software Development Engineer internship.</h4>
+                        Microsoft<span class="text-muted"> authored May 2009</span>
+                      </div>
+                    </div>
+                </div>
+                <div id="log_ibm_intern_close" class="gitgraph-detail media">
+                    <div class="media">
+                      <a class="pull-left" href="#">
+                          <div style="background:url('assets/images/logo_jc.png'); background-size: contain; background-position: center; background-repeat: no-repeat; width: 50px; height: 50px"></div>
+                      </a>
+                      <div class="media-body">
+                        <h4 class="media-heading">Merge branch &apos;ibm&apos; into &apos;experience&apos;.</h4>
+                        Josh Carrier<span class="text-muted"> authored Oct 2008</span>
+                      </div>
+                    </div>
+                </div>
+                <div id="log_ibm_intern" class="gitgraph-detail media">
+                    <div class="media">
+                      <a class="pull-left" href="#">
+                          <div style="background:url('assets/images/logo_ibm.jpg'); background-size: contain; background-position: center; background-repeat: no-repeat; width: 50px; height: 50px"></div>
+                      </a>
+                      <div class="media-body">
+                        <h4 class="media-heading">Branch to Software Developer internship.</h4>
+                        IBM <span class="text-muted"> authored Jan 2008</span>
+                      </div>
+                    </div>
+                </div>
+                <div id="log_exp_ubc_init" class="gitgraph-detail media">
+                    <div class="media">
+                      <a class="pull-left" href="#">
+                          <div style="background:url('assets/images/logo_ubc.jpg'); background-size: contain; background-position: center; background-repeat: no-repeat; width: 50px; height: 50px"></div>
+                      </a>
+                      <div class="media-body">
+                        <h4 class="media-heading">Initial enrollment to the Faculty of Science.</h4>
+                        The University of British Columbia<span class="text-muted"> authored Sept 2005</span>
+                      </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -439,10 +516,10 @@
 			{
 				projectGroups.push(projects.slice(i, i + projectColumns));
 			}
-			
+
 			return projectGroups;
 		};
-		
+
 		portfolioApp.controller('PrimaryProjectListCtrl', function ($scope) {
             var projects = [
 				{
@@ -473,7 +550,7 @@
 
           $scope.projectGroups = createProjectGroups(projects);
         });
-		
+
         portfolioApp.controller('ArchivedProjectListCtrl', function ($scope) {
             var projects = [
 				{
@@ -561,40 +638,57 @@
 
                 var education = gitGraph.branch("experience")
                                         .commit( {
-                                            sha1: "2005-09:",
-                                            message: "Initial enrollment to the Faculty of Science at the University of British Columbia"
+                                            sha1: " ",
+                                            message: " ",
+                                            detailId: "log_exp_ubc_init"
                                         });
 
                 var ibm = gitGraph.branch("ibm")
                                   .commit( {
-                                      sha1: "2008-01:",
-                                      message: "Branch to Software Developer internship at IBM"
+                                      sha1: " ",
+                                      message: " ",
+                                      detailId: "log_ibm_intern"
                                   })
-                                  .merge(education, { sha1: "2008-08:" });
+                                  .merge(education, { sha1: " ", message: " ", detailId: "log_ibm_intern_close" });
 
 
                 var microsoft = gitGraph.branch({ name: "microsoft" })
                                         .commit( {
-                                            sha1: "2009-05:",
-                                            message: "Branch to Software Engineer internship at Microsoft"
+                                            sha1: " ",
+                                            message: " ",
+                                            detailId: "log_msft_intern"
                                         })
-                                        .merge(education, { sha1: "2009-08:" })
+                                        .merge(education, { sha1: " ", message: " ", detailId: "log_msft_intern_close" })
                                         .delete();
 
                 education.commit( {
-                            sha1: "2010-05:",
-                            message: "Complete B.Sc. Combined Biology and Computer Science"
+                            sha1: " ",
+                            message: " ",
+                            detailId: "log_exp_ubc_close"
                           })
                           .merge(microsoft);
 
                 gitGraph.branch("Microsoft")
                         .commit( {
-                                sha1: "2010-07",
-                                message: "Branch to Software Engineer at Microsoft"
+                                sha1: " ",
+                                message: " ",
+                                detailId: "log_msft_fte"
                         });
             };
 
             renderExperienceGraph();
+
+            // fix repositioning not triggered moving to/from xs viewport
+            var resizePromise;
+            $(window).resize(function(){
+                if(resizePromise) {
+                    clearTimeout(resizePromise);
+                }
+
+               resizePromise = window.setTimeout(renderExperienceGraph, 100);
+            });
+
+            resizePromise = window.setTimeout(renderExperienceGraph, 100);
         });
     </script>
 </body>
